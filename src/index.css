@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Comic+Neue:wght@700&family=Fredoka+One&display=swap');
+
+
+/* NavBar*/
+.navBar{
+  font-family: 'Comic Neue', cursive !important;
+}
+
+
+
+/* Contenido del main*/
+#root {
+  background-color: #ddfdd2;
+}
+.greeting{
+  color:#5015bd;
+  font-family: 'Fredoka One', cursive;
+  
+}
