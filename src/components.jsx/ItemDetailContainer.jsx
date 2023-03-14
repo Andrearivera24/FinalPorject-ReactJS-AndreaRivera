@@ -1,30 +1,32 @@
-// Acá es la misma consignda que en ItemListContainer, con use effect llamo al fetch y guardo en el useState el array recibido 
+
 
 import React from 'react'
+import {collection, getDocs, getFirestore} from "firebase/firestore"
 import { useState, useEffect} from 'react';
-import Professors from '../data.json';
-import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
- 
-const [professor, setProfessor] = useState([])
-console.log(professor);
+const [professors, setProfessors] = useState([]);
 
 useEffect(()=>{
- async function fetchProfessor() {
-    try {
-        const response = await fetch(Professors)
-        const data = await response.json()
-        setProfessor(data)     
-    } catch (error) {}
- }
-fetchProfessor()
-} , [])
 
-// pasaré "Professors" como propiedades a ItemDetail
+  const db = getFirestore();
+
+  const professorsCollection = collection(db, "Professors");
+
+  getDocs (professorsCollection).then((snapshot)=>{
+    const professors = snapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    setProfessors(professors)
+  });
+
+},[])
+
+// pasaré "professors" como propiedades a ItemDetail
   return <>
-  <ItemDetail Professors ={Professors}/>
+  <ItemDetail Professors ={professors}/>
   </>
     
 }

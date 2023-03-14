@@ -1,5 +1,4 @@
 
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom';
 import {
     Center,
@@ -13,10 +12,12 @@ import {
     Stack,
     CardFooter,
     Button,
-    Flex,
+   
   } from '@chakra-ui/react'
 
 const Item =({id, name, stock, nationality, img})=>{ // desestructuro las propiedades que me pasó "ItemList"
+
+    console.log(id);
     return (// Creo aquí las cards en donde usaré las propiedades.
         <>
        

@@ -1,30 +1,34 @@
 import React from 'react'
-import { useState, useEffect} from 'react';
-import { Container, Button, ButtonGroup, Heading, Text, Flex, Center } from '@chakra-ui/react'
+import { useState,} from 'react';
+import { Container, Button, Text, Flex, } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon, MinusIcon } from '@chakra-ui/icons'
-const ItemCount = () => {
+const ItemCount = ({initial, stock, onAdd}) => {
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(initial);
 
-    const sumar = ()=>{
+    const increase = ()=>{
         setCounter (counter + 1)
+        
     };
-    const restar = ()=>{
+    const decrease = ()=>{
         setCounter (counter - 1)
     }
 
 
-  
+    // evento para setear el nuevo array con la cantidad actual seleccionada.
+
 
   return <>
-  
-  <Container ml="50px">
+<Container>
+
 <Flex alignItems ='center' gap= '2'>
 
-    <IconButton
+
+  <IconButton
   size = "xs"
-  onClick={sumar}
+  onClick={increase}
+  isDisabled={counter >= stock}
   variant='outline'
   colorScheme='green'
   aria-label='Send email'
@@ -34,7 +38,8 @@ const ItemCount = () => {
 
 <IconButton
   size = "xs"
-  onClick={restar}
+  onClick={decrease}
+  isDisabled= {counter <= 1}
   variant='outline'
   colorScheme='green'
   aria-label='Send email'
@@ -42,6 +47,9 @@ const ItemCount = () => {
 />
 
 </Flex>
+<Button isDisabled={stock = 0} mt='5px'ml="-20px" colorScheme={'purple'} onClick={()=> onAdd(counter)} >Add to cart</Button>
+
+
   
      
 </Container>
@@ -56,3 +64,4 @@ const ItemCount = () => {
 }
 
 export default ItemCount
+

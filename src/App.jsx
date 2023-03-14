@@ -5,9 +5,14 @@ import Welcome from "./components.jsx/welcome";
 import NavBar from "./components.jsx/NavBar";
 import Cart from "./components.jsx/Cart";
 
+import ShoppingCartContextProvider from "./context/ShoppingCartContext";
+
 const App =() =>{
 
+   // traigo el Provider que le pasará las funciones de set y setCounter a todos sus hijos, es decir a todos los que envuelva. 
+
     return <div>
+      <ShoppingCartContextProvider>
         <BrowserRouter> 
            <NavBar/>
 
@@ -20,6 +25,7 @@ const App =() =>{
              </Routes>
 
         </BrowserRouter>
+        </ShoppingCartContextProvider>
 
       
        
