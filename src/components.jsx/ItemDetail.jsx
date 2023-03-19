@@ -9,6 +9,7 @@ import {
   Text,
   Divider,
   Stack,
+  Flex,
   CardFooter,
   Button,
   Link,
@@ -21,9 +22,8 @@ import { useCartContext } from '../context/ShoppingCartContext';
 const ItemDetail = ({Professors}) => {
   //--> llamo a un solo documento y que renderice dinámicamente cada id.
 const {id} = useParams();
-
-console.log(id);
 const [professor, setProfessor]= useState([])
+const {addProduct}= useCartContext()
 
 useEffect(()=>{
 
@@ -40,16 +40,41 @@ useEffect(()=>{
   });
 
 },[])
-//  const professorFilter = Professors.filter((professor)=> professor.id === id);
-// // //--> creo la función on Add para pasarme la cantidad que fue elegida en el counter
-// // const addToCart =(quantity)=>{
-// //   console.log(`Elegiste un pack de ${quantity} clases`)
-// // }
+
+ //--> creo la función on Add para pasarme la cantidad que fue elegida en el counter
+ const onAdd =(quantity)=>{
+ addProduct(Professors, quantity)
+ console.log(`Elegiste un pack de ${quantity} clases`) 
+}
   return (
     <>{
       <div>
-        <h4>name:{professor.name}</h4>
-        <h4>nationality:{professor.nationality}</h4>
+
+        <Center p="2rem" w='350px' m='auto'>
+            
+            <Card className='cards'>
+                 <CardHeader>
+                         <Heading size="lg" textAlign={[ 'center' ]}>{professor.name}</Heading>
+                     </CardHeader>
+        
+                     <CardBody>
+                         <Image borderRadius="lg" h="325px"src={professor.img}></Image>
+                         <Stack mt="6" spacing="3">  {/*Stack se usa para agrupar elementos y aplicar espacios entre ellos*/}
+                            <Text fontSize="xl">Nationality: {professor.nationality} </Text>
+                            <Text fontSize="l">Description: {professor.description} </Text>
+                            <Text fontSize="l">Available classes: {professor.stock} </Text>
+                            <Text color="green.600" fontSize="xl">Price: U$D {professor.price}</Text>
+                         </Stack>
+                     </CardBody>
+        
+                     <Divider/>{/*Dividers are used to visually separate content in a list or group.*/}
+                     <CardFooter className="cardFooter">
+                       <ItemCount initial={1} stock={professor.stock} onAdd={onAdd}/> 
+                     </CardFooter>
+               </Card>
+             </Center> 
+
+        
       </div>
     }
     </>

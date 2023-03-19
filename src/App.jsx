@@ -4,8 +4,9 @@ import ItemListContainer from "./components.jsx/ItemListContainer";
 import Welcome from "./components.jsx/welcome";
 import NavBar from "./components.jsx/NavBar";
 import Cart from "./components.jsx/Cart";
-
+import Sendorder from "./components.jsx/Sendorder";
 import ShoppingCartContextProvider from "./context/ShoppingCartContext";
+
 
 const App =() =>{
 
@@ -22,6 +23,7 @@ const App =() =>{
                <Route exact path ="/nationality/:nationality" element = {<ItemListContainer/>}/> 
                <Route exact path ="/item/:id" element = {<ItemDetailContainer/>}/>
                <Route exact path = "/cart" element= {<Cart/>} />
+               <Route exact path = "/sendorder" element= {<Sendorder/>} />
              </Routes>
 
         </BrowserRouter>

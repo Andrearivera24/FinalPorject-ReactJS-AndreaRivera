@@ -14,7 +14,8 @@ useEffect(()=>{
     const itemCollection = collection(db, "Professors");
     
     getDocs(itemCollection). then((snapshot)=>{
-        const docs = snapshot.docs.map((doc)=> doc.data());
+        const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        // const docs = snapshot.docs.map((doc)=> doc.data());
         setProfessors(docs);
     })
 

@@ -16,14 +16,10 @@ import {
   } from '@chakra-ui/react'
 
 const Item =({id, name, stock, nationality, img})=>{ // desestructuro las propiedades que me pasó "ItemList"
-
-    console.log(id);
     return (// Creo aquí las cards en donde usaré las propiedades.
         <>
-       
-            <div key={id}> 
+            <div key={id}>      
             <Center p="1rem" >
-                
                 <Card className='cards'>
                     <CardHeader>
                         <Heading size="lg" textAlign={[ 'center' ]}>{name}</Heading>

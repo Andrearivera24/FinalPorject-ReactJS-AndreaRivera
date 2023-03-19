@@ -15,27 +15,10 @@ const ItemCount = ({initial, stock, onAdd}) => {
         setCounter (counter - 1)
     }
 
-
-    // evento para setear el nuevo array con la cantidad actual seleccionada.
-
-
   return <>
-<Container>
+<Container ml='60px'>
 
-<Flex alignItems ='center' gap= '2'>
-
-
-  <IconButton
-  size = "xs"
-  onClick={increase}
-  isDisabled={counter >= stock}
-  variant='outline'
-  colorScheme='green'
-  aria-label='Send email'
-  icon={<AddIcon  />}/>
-
-<Text fontSize="xl">{counter}</Text>
-
+<Flex alignItems ='center' gap= '3'>
 <IconButton
   size = "xs"
   onClick={decrease}
@@ -46,8 +29,22 @@ const ItemCount = ({initial, stock, onAdd}) => {
   icon={<MinusIcon />}
 />
 
+
+<Text fontSize="xl">{counter}</Text>
+
+<IconButton
+  size = "xs"
+  onClick={increase}
+  isDisabled={counter >= stock}
+  variant='outline'
+  colorScheme='green'
+  aria-label='Send email'
+  icon={<AddIcon  />}/>
+
+
+
 </Flex>
-<Button isDisabled={stock = 0} mt='5px'ml="-20px" colorScheme={'purple'} onClick={()=> onAdd(counter)} >Add to cart</Button>
+<Button isDisabled={stock = 0} mt='5px'ml="-15px" colorScheme={'purple'} onClick={()=> onAdd(counter)} >Add to cart</Button>
 
 
   
