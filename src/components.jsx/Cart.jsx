@@ -3,7 +3,10 @@ import { useCartContext } from '../context/ShoppingCartContext';
 import { Link } from 'react-router-dom';
 const Cart = () => {
   const { cart, totalPrice, removeProduct }= useCartContext();
-  console.log(cart);
+
+  console.log(cart.map(prod=> prod.id));
+
+  
   if(cart.length === 0){
     return (
       <>
@@ -19,23 +22,23 @@ const Cart = () => {
     <>
     <Container maxW="xl" p='5rem'>
       {
-        cart.map((professorInCart)=>(
-          <div key={professorInCart.id}>
+        cart.map((product)=>(
+          <div key={product.id}>
             <Card p='1rem'>
             <Stack direction='row' h='100px' >
                 <Divider orientation='vertical'/>
-                <Image>{professorInCart.img}</Image>
+                <Image>{product.img}</Image>
                 </Stack>    
 
-                <Text> Name: {professorInCart.name}</Text>
-                <Text> Nationality: {professorInCart.nationality}</Text>
-                <Text> Pack: {professorInCart.quantity} classes</Text>
-                <Text> Price: {professorInCart.price}</Text>
-                <Text> SubTotal: {professorInCart.quantity * professorInCart.price}</Text>
+                <Text> Name: {product.name}</Text>
+                <Text> Nationality: {product.nationality}</Text>
+                <Text> Pack: {product.quantity} classes</Text>
+                <Text> Price: {product.price}</Text>
+                <Text> SubTotal: {product.quantity * product.price}</Text>
             
                 <CardFooter ml='60px'>
                 <Flex gap='3'>
-                <Button w='100px' onClick={()=> removeProduct(professorInCart.id)}>Delete</Button>
+                <Button w='100px' onClick={()=> removeProduct(product.id)}>Delete</Button>
                 <Link to ='/sendorder'><Button w='100px'>Purchase</Button></Link>
                 </Flex>
                 </CardFooter>

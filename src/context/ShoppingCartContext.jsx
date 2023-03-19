@@ -14,23 +14,24 @@ const ShoppingCartContextProvider = ({children}) => {
 
 
 
-// --> 3. Borrar el carrito  
+// --> 2. Borrar el carrito  
 const removeProduct = (id) => setCart(cart.filter(professor => professor.id !== id)) //--> Esto setea un nuevo array con todos los productos que no tengan ese ID. 
 
+// --> 3. true or false si hay producto o no en el carrito. 
+ const isInCart = (id)=> cart.find(professor => professor.id === id) ? true : false;
 
-// --> 4. Agregar producto al carrito (esta función se va a utilizar en el itemDetail)
-const addProduct = (item, quantity)=>{ //--> son los argumentos que pasé en el itemDetail dentro de la función "onAdd"
- let newCart; // creo nuevo carrito
- let product = cart.find(product=> product.id === item.id); //para encontrar el producto
+//--> agregar producto al carrito. 
 
-    if (product){
-     product.quantity += quantity; // si lo encuentro con += le sumo la cantidad a la que ya tenía
-     newCart = [...cart]; // nuevo arrary, 
-    } else {// si no lo encuentro, es porque está nuevo, entonces creo un producto nuevo
-      product = {...item, quantity: quantity}; 
-      newCart = [...cart, product]
+const addProduct=(item, quantity)=>{
+
+     if(isInCart(item.id)){
+      setCart(cart.map(product => {
+        return product.id === item.id? {...product, quantity: product.quantity + quantity}: product
+      }));
+
+     }else {
+      setCart ([...cart,{...item,quantity}]);
      }
- setCart(newCart) //--> seteo el nuevo carrito.
 }
 
 
@@ -50,7 +51,14 @@ const totalPrice = () => {
 
 
   return (
-    <CartContext.Provider value={{cart, setCart, cleanCart, removeProduct, addProduct, totalPrice, totalProducts}}>
+    <CartContext.Provider value={{cart, 
+    setCart, 
+    cleanCart,
+    removeProduct, 
+    addProduct, 
+    totalPrice, 
+    totalProducts, 
+    isInCart}}>
        {children}
     </CartContext.Provider>
   )
@@ -61,6 +69,21 @@ export default ShoppingCartContextProvider;
 
 
 
+// // --> 4. Agregar producto al carrito (en el itemDetail)
+// const addProduct = (item, quantity)=>{ //--> son los argumentos que pasé en el itemDetail dentro de la función "onAdd"
+//   let newCart; // creo nuevo carrito
+//   let product = cart.find(product=> product.id === item.id); //para encontrar el producto
+ 
+//      if (product){
+//       product.quantity += quantity; // si lo encuentro con += le sumo la cantidad a la que ya tenía
+//       newCart = [...cart]; // nuevo arrary, 
+//      } else {// si no lo encuentro, es porque está nuevo, entonces creo un producto nuevo
+//        product = {...item, quantity: quantity}; 
+//        newCart = [...cart, product]
+//       }
+//   setCart(newCart) //--> seteo el nuevo carrito.
+//  }
+ 
 
 
 
@@ -71,5 +94,7 @@ export default ShoppingCartContextProvider;
 
 
 
-// --> 2. true or false si hay producto o no en el carrito. 
-//  const isInCart = (id)=> cart.find(professor => professor.id === id) ? true : false;
+
+
+
+
