@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
   const { cart, totalPrice, removeProduct }= useCartContext();
 
-  console.log(cart.map(prod=> prod.id));
+  console.log(cart.map(prod => prod.id));
+  console.log(cart.map(prod => prod.quantity));
 
-  
+
   if(cart.length === 0){
     return (
       <>
