@@ -25,8 +25,8 @@ const removeProduct = (id) => setCart(cart.filter(professor => professor.id !== 
 const addProduct=(item, quantity)=>{
 
      if(isInCart(item.id)){
-      setCart(cart.map(product => {
-        return product.id === item.id? {...product, quantity: product.quantity + quantity}: product
+      setCart(cart.map(professor => {
+        return professor.id === item.id? {...professor, quantity: professor.quantity + quantity}: professor
       }));
 
      }else {

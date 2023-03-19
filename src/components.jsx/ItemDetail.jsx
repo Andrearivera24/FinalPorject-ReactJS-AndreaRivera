@@ -43,7 +43,7 @@ useEffect(()=>{
 
  //--> creo la función on Add para pasarme la cantidad que fue elegida en el counter
  const onAdd =(quantity)=>{
- addProduct(Professors, quantity)
+ addProduct(professor, quantity)
  console.log(`Elegiste un pack de ${quantity} clases`) 
 }
   return (

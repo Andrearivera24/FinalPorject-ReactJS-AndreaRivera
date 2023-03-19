@@ -23,12 +23,12 @@ useEffect(()=>{
   });
 
 },[])
-
 // pasaré "professors" como propiedades a ItemDetail
   return <>
   <ItemDetail Professors ={professors}/>
   </>
     
 }
+
 
 export default ItemDetailContainer;
