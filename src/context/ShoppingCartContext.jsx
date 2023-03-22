@@ -18,22 +18,23 @@ const ShoppingCartContextProvider = ({children}) => {
 const removeProduct = (id) => setCart(cart.filter(professor => professor.id !== id)) //--> Esto setea un nuevo array con todos los productos que no tengan ese ID. 
 
 // --> 3. true or false si hay producto o no en el carrito. 
- const isInCart = (id)=> cart.find(professor => professor.id === id) ? true : false;
+ const isInCart = (id)=> cart.some((professor) => professor.id === id);
 
 //--> agregar producto al carrito. 
 
 const addProduct=(item, quantity)=>{
 
-     if(isInCart(item.id)){
-      setCart(cart.map(professor => {
-        return professor.id === item.id? {...professor, quantity: professor.quantity + quantity}: professor
-      }));
+  if(isInCart(item.id)){
+   setCart(cart.map(professor => {
+     return professor.id === item.id? {...professor, quantity: professor.quantity + quantity}: professor
+   }));
 
-     }else {
-      setCart ([...cart,{...item,quantity}]);
-     }
+  }else {
+   setCart ([...cart,{...item, quantity}]);
+  }
 }
 
+ 
 
 
 // --> 5. Total de productos, para ponerlo con el número spaneado del cartWidget.
@@ -69,6 +70,22 @@ export default ShoppingCartContextProvider;
 
 
 
+ 
+
+
+// // --> 4. Agregar producto al carrito (en el itemDetail)
+// const addProduct = (item, quantity) => {
+//   if (isInCart(item.id)) {
+//     setCart(cart.map(product => {
+//       return product.id === item.id ? { ...product, quantity: product.quantity + quantity } : product;
+//     }));
+//   } else {
+//     setCart([...cart, {...item, quantity: quantity}]);
+//   }
+// }
+
+
+
 // // --> 4. Agregar producto al carrito (en el itemDetail)
 // const addProduct = (item, quantity)=>{ //--> son los argumentos que pasé en el itemDetail dentro de la función "onAdd"
 //   let newCart; // creo nuevo carrito
@@ -83,11 +100,6 @@ export default ShoppingCartContextProvider;
 //       }
 //   setCart(newCart) //--> seteo el nuevo carrito.
 //  }
- 
-
-
-
-
 
 
 

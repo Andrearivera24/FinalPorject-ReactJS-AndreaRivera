@@ -1,9 +1,15 @@
 import React from 'react'
 import { useState,} from 'react';
-import { Container, Button, Text, Flex, } from '@chakra-ui/react'
+import { Container, Button, Text, Flex} from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
-import { PhoneIcon, AddIcon, WarningIcon, MinusIcon } from '@chakra-ui/icons'
+import { AddIcon, MinusIcon } from '@chakra-ui/icons'
+import { useCartContext } from '../context/ShoppingCartContext';
+import { Link } from 'react-router-dom';
+
+
+
 const ItemCount = ({initial, stock, onAdd}) => {
+     const{cart} = useCartContext();
 
     const [counter, setCounter] = useState(initial);
 
@@ -44,11 +50,11 @@ const ItemCount = ({initial, stock, onAdd}) => {
 
 
 </Flex>
+
 <Button isDisabled={stock = 0} mt='5px'ml="-15px" colorScheme={'purple'} onClick={()=> onAdd(counter)} >Add to cart</Button>
 
+       { (cart.length !== 0) && <Link to ="/cart"><Button>Cart</Button></Link> }
 
-  
-     
 </Container>
  
 
@@ -60,5 +66,7 @@ const ItemCount = ({initial, stock, onAdd}) => {
   </>
 }
 
-export default ItemCount
+export default ItemCount;
+
+{}
 

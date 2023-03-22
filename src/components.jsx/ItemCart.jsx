@@ -1,18 +1,18 @@
 import { useCartContext } from "../context/ShoppingCartContext"
-import { Button, Container, Card, Text, Stack, Divider, Image, Flex, CardFooter} from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Button, Heading, Container, Card, Text, Stack, Divider, Image, Flex, CardFooter} from '@chakra-ui/react'
+
 
 const ItemCart = ({professorInCart}) => {
   const {removeProduct} =  useCartContext();
 
   return (
     <>
-    <Container maxW="xl" p='5rem'>
+    <Container p='2rem'>
       {
             <Card p='1rem'>
             <Stack direction='row' h='100px' >
                 <Divider orientation='vertical'/>
-                <Image borderRadius="sm "src={professorInCart.img}></Image>
+                <Image borderRadius="md "src={professorInCart.img}></Image>
              
                 </Stack>    
 
@@ -24,13 +24,14 @@ const ItemCart = ({professorInCart}) => {
             
                 <CardFooter ml='60px'>
                 <Flex gap='3'>
-                <Button w='100px' onClick={()=> removeProduct(professorInCart.id)}>Delete</Button>
-                <Link to ='/sendorder'><Button w='100px'>Purchase</Button></Link>
+                <Button w='80px' onClick={()=> removeProduct(professorInCart.id)}>Delete</Button>
+                
                 </Flex>
                 </CardFooter>
             </Card>
    }
     </Container>
+
     </>)
 }
 
