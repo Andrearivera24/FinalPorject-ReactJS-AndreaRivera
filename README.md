@@ -10,20 +10,20 @@ Once the user selects the number of classes desired with each teacher, they will
 
 ## Basic navigability in which I used:
 - JSX and transpiling
-- Components.
+- Components
 - Promises, asynchrony and MAP
 - Routing and navigation
-- Events.
-- Context.
-- Firebase.
+- Events
+- Context
+- Firebase
 - Different rendering techniques
 - CSS
-- Chakra, React-router-dom.
+- Chakra, React-router-dom
 
 ### Tecnologies
 - Webpack VITE
 - React Library
-- React-router-dom.
+- React-router-dom
 - Chakra UI 
 - JavaScript
 - CSS
