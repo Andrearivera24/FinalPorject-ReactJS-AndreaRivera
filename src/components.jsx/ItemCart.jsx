@@ -1,5 +1,6 @@
 import { useCartContext } from "../context/ShoppingCartContext"
-import { Button, Heading, Container, Card, Text, Stack, Divider, Image, Flex, CardFooter} from '@chakra-ui/react'
+import { DeleteIcon } from '@chakra-ui/icons'
+import { IconButton, Button, CardBody,Heading, CardHeader, Container, Card, Text, Center, Image, } from '@chakra-ui/react'
 
 
 const ItemCart = ({professorInCart}) => {
@@ -7,29 +8,29 @@ const ItemCart = ({professorInCart}) => {
 
   return (
     <>
-    <Container p='2rem'>
+     <Container  m='auto'>   
       {
-            <Card p='1rem'>
-            <Stack direction='row' h='100px' >
-                <Divider orientation='vertical'/>
-                <Image borderRadius="md "src={professorInCart.img}></Image>
-             
-                </Stack>    
+         <Center>
+          <Card className='cards' p='1rem'>
+                 <Heading color='purple.700' size="lg" textAlign={[ 'center' ]}>{professorInCart.name}</Heading>
 
-                <Text> Name: {professorInCart.name}</Text>
-                <Text> Nationality: {professorInCart.nationality}</Text>
-                <Text> Pack: {professorInCart.quantity} classes</Text>
-                <Text> Price: {professorInCart.price}</Text>
-                <Text> SubTotal: {professorInCart.quantity * professorInCart.price}</Text>
-            
-                <CardFooter ml='60px'>
-                <Flex gap='3'>
-                <Button w='80px' onClick={()=> removeProduct(professorInCart.id)}>Delete</Button>
-                
-                </Flex>
-                </CardFooter>
+                  <CardHeader>
+                  <Image  borderRadius="md" src={professorInCart.img}></Image>
+                  </CardHeader>
+
+                  <CardBody mt='-30px'>
+                    <Text color='purple.900'> Pack: {professorInCart.quantity} classes</Text>
+                    <Text color='purple.900'> U$D: {professorInCart.price}</Text>
+                    <Text color='purple.900'> SubTotal: {professorInCart.quantity * professorInCart.price}</Text>
+                  </CardBody>
+                  <Center>
+                   <IconButton colorScheme='purple' icon={< DeleteIcon/>} onClick={()=> removeProduct(professorInCart.id)}></IconButton>
+
+                  </Center>
+                            
             </Card>
-   }
+          </Center>         
+   }  
     </Container>
 
     </>)

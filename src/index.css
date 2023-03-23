@@ -21,3 +21,31 @@
 .cartContainer{
   background-color:#cef2c3;
 }
+.profContainer{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  padding-right: 4rem;
+  background-color: #ebffe9c9;
+  border-radius: 5px;
+  font-family: 'Comic Neue', cursive !important;
+}
+.cards{
+  background-color:#f7fff5 !important;
+}
+.formulario{
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color:#f7fff5;
+  width: 500px;
+  padding: 50px;
+  border-radius: 6px;
+}
+
+.Title{
+  font-family: 'Comic Neue', cursive !important;
+}
+
+
+
