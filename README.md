@@ -1,5 +1,5 @@
 # Spanish By Hispanics 
-## ¡Learn Spanish with native teachers!
+## Learn Spanish with native teachers!
 
 Welcome to my final project for React JS course.
  
